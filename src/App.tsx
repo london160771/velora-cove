@@ -46,6 +46,7 @@ function useMediaPolicy() {
 function Film({ name, poster, label, children, className = '', critical = false, reduced, saveData }: { name: string; poster: string; label: string; children?: ReactNode; className?: string; critical?: boolean; reduced: boolean; saveData: boolean }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const video = useRef<HTMLVideoElement>(null)
+  const playback = useRef({ request: 0, pending: false, source: '', blocked: false })
   const bindVideo = useCallback((element: HTMLVideoElement | null) => {
     video.current = element
     if (element) { element.defaultMuted = true; element.muted = true }
@@ -61,6 +62,40 @@ function Film({ name, poster, label, children, className = '', critical = false,
   const [failed, setFailed] = useState(false)
   const [mobile, setMobile] = useState(() => matchMedia('(max-width: 700px)').matches)
   const allowed = manual || (!reduced && !saveData)
+  const playVideo = useCallback((el: HTMLVideoElement) => {
+    const request = ++playback.current.request
+    playback.current.pending = true
+    playback.current.source = el.getAttribute('src') || ''
+    el.defaultMuted = true
+    el.muted = true
+    el.playsInline = true
+    el.loop = true
+    const rejected = () => {
+      if (request !== playback.current.request) return
+      playback.current.pending = false
+      playback.current.blocked = true
+      setPlaying(false)
+      setFailed(true)
+      setReady(false)
+    }
+    try {
+      // Keep this call synchronous: manual playback must retain the tap gesture.
+      el.play().then(() => {
+        if (request !== playback.current.request) return
+        playback.current.pending = false
+        playback.current.blocked = false
+        setFailed(false)
+        setPlaying(!el.paused)
+        setReady(el.readyState >= 2)
+      }, rejected)
+    } catch { rejected() }
+  }, [])
+  const pauseVideo = useCallback((el: HTMLVideoElement) => {
+    ++playback.current.request
+    playback.current.pending = false
+    el.pause()
+    setPlaying(false)
+  }, [])
   useEffect(() => {
     const mq = matchMedia('(max-width: 700px)')
     const update = () => { setMobile(mq.matches); setReady(false) }
@@ -81,19 +116,47 @@ function Film({ name, poster, label, children, className = '', critical = false,
   useEffect(() => {
     const el = video.current
     if (!el) return
+    const source = `${base}${name}-${mobile ? 'mobile' : 'desktop'}.mp4`
+    if (attached && el.getAttribute('src') !== source) {
+      ++playback.current.request
+      playback.current.pending = false
+      setReady(false)
+      el.src = source
+    }
     if (attached && allowed && visible && !paused && !hidden) {
-      el.play().catch(() => setPlaying(false))
-    } else el.pause()
-  }, [attached, allowed, visible, paused, hidden, mobile])
+      if (!playback.current.blocked && (!playback.current.pending || playback.current.source !== el.getAttribute('src')) && el.paused) playVideo(el)
+    } else pauseVideo(el)
+  }, [attached, allowed, visible, paused, hidden, mobile, name, playVideo, pauseVideo])
+  useEffect(() => () => {
+    ++playback.current.request
+    playback.current.pending = false
+    video.current?.pause()
+  }, [])
 
   const toggle = () => {
-    if (failed) video.current?.load()
-    if (playing) setPaused(true)
-    else { setManual(true); setPaused(false); setFailed(false); setAttached(true) }
+    const el = video.current
+    if (!el) return
+    if (!el.paused) { setPaused(true); pauseVideo(el); return }
+    const source = `${base}${name}-${matchMedia('(max-width: 700px)').matches ? 'mobile' : 'desktop'}.mp4`
+    // Attach/load within the same interaction; never wait for a render or canplay.
+    el.defaultMuted = true
+    el.muted = true
+    el.playsInline = true
+    if (el.getAttribute('src') !== source || el.error) {
+      setReady(false)
+      el.src = source
+      el.load()
+    }
+    setManual(true)
+    setPaused(false)
+    setFailed(false)
+    setAttached(true)
+    playback.current.blocked = false
+    playVideo(el)
   }
   return <div ref={wrapper} className={`film ${className}`}>
     <Image name={poster} alt="" className="film-poster" eager={critical} />
-    <video ref={bindVideo} className={ready && allowed ? 'is-ready' : ''} autoPlay={allowed && visible && !paused} muted playsInline loop preload={critical && allowed ? 'auto' : 'none'} poster={`${base}${poster}-1100.webp`} src={attached ? `${base}${name}-${mobile ? 'mobile' : 'desktop'}.mp4` : undefined} onCanPlay={() => setReady(true)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => { setFailed(true); setReady(false) }} aria-hidden="true" />
+    <video ref={bindVideo} className={ready && allowed ? 'is-ready' : ''} autoPlay={allowed && visible && !paused && !hidden && !failed} muted playsInline loop preload={critical && allowed ? 'auto' : 'none'} poster={`${base}${poster}-1100.webp`} onCanPlay={() => { if (!playback.current.blocked) setReady(true) }} onPlaying={() => { setPlaying(true); setFailed(false) }} onPause={() => setPlaying(false)} onError={() => { ++playback.current.request; playback.current.pending = false; playback.current.blocked = true; setPlaying(false); setFailed(true); setReady(false) }} aria-hidden="true" />
     {children}
     <button type="button" onClick={toggle} className="film-control" aria-label={`${playing ? 'Pause' : failed ? 'Retry' : 'Play'} ${label} film`}>
       <span className={playing ? 'pause-icon' : 'play-icon'} aria-hidden="true" />
