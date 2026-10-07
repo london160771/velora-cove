@@ -1,0 +1,263 @@
+[
+  {
+    "file": "bathroom-detail-640.webp",
+    "source": "rooms/bathroom-detail.jpg",
+    "width": 640,
+    "height": 959,
+    "bytes": 41690
+  },
+  {
+    "file": "bathroom-detail-1100.webp",
+    "source": "rooms/bathroom-detail.jpg",
+    "width": 1100,
+    "height": 1648,
+    "bytes": 87402
+  },
+  {
+    "file": "bathroom-detail-1800.webp",
+    "source": "rooms/bathroom-detail.jpg",
+    "width": 1800,
+    "height": 2696,
+    "bytes": 282314
+  },
+  {
+    "file": "room-01-640.webp",
+    "source": "rooms/room-01.jpg",
+    "width": 640,
+    "height": 427,
+    "bytes": 58908
+  },
+  {
+    "file": "room-01-1100.webp",
+    "source": "rooms/room-01.jpg",
+    "width": 1100,
+    "height": 734,
+    "bytes": 148980
+  },
+  {
+    "file": "room-01-1800.webp",
+    "source": "rooms/room-01.jpg",
+    "width": 1800,
+    "height": 1202,
+    "bytes": 347234
+  },
+  {
+    "file": "room-02-640.webp",
+    "source": "rooms/room-02.jpg",
+    "width": 640,
+    "height": 427,
+    "bytes": 36784
+  },
+  {
+    "file": "room-02-1100.webp",
+    "source": "rooms/room-02.jpg",
+    "width": 1100,
+    "height": 734,
+    "bytes": 92880
+  },
+  {
+    "file": "room-02-1800.webp",
+    "source": "rooms/room-02.jpg",
+    "width": 1800,
+    "height": 1202,
+    "bytes": 221630
+  },
+  {
+    "file": "room-03-640.webp",
+    "source": "rooms/room-03.jpg",
+    "width": 640,
+    "height": 427,
+    "bytes": 55230
+  },
+  {
+    "file": "room-03-1100.webp",
+    "source": "rooms/room-03.jpg",
+    "width": 1100,
+    "height": 734,
+    "bytes": 140500
+  },
+  {
+    "file": "room-03-1800.webp",
+    "source": "rooms/room-03.jpg",
+    "width": 1800,
+    "height": 1202,
+    "bytes": 328370
+  },
+  {
+    "file": "hero-poster-640.webp",
+    "source": "video/hero-villa.mp4 @ 5.5s",
+    "width": 640,
+    "height": 1138,
+    "bytes": 58068
+  },
+  {
+    "file": "hero-poster-1100.webp",
+    "source": "video/hero-villa.mp4 @ 5.5s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 115196
+  },
+  {
+    "file": "hero-poster-1800.webp",
+    "source": "video/hero-villa.mp4 @ 5.5s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 115196
+  },
+  {
+    "file": "pool-640.webp",
+    "source": "video/hero-villa.mp4 @ 7.4s",
+    "width": 640,
+    "height": 1138,
+    "bytes": 53126
+  },
+  {
+    "file": "pool-1100.webp",
+    "source": "video/hero-villa.mp4 @ 7.4s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 104802
+  },
+  {
+    "file": "pool-1800.webp",
+    "source": "video/hero-villa.mp4 @ 7.4s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 104802
+  },
+  {
+    "file": "terrace-640.webp",
+    "source": "video/hero-villa.mp4 @ 1.5s",
+    "width": 640,
+    "height": 1138,
+    "bytes": 70010
+  },
+  {
+    "file": "terrace-1100.webp",
+    "source": "video/hero-villa.mp4 @ 1.5s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 131336
+  },
+  {
+    "file": "terrace-1800.webp",
+    "source": "video/hero-villa.mp4 @ 1.5s",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 131336
+  },
+  {
+    "file": "balcony-poster-640.webp",
+    "source": "video/ocean-balcony.mp4 @ 0.2s",
+    "width": 640,
+    "height": 360,
+    "bytes": 21990
+  },
+  {
+    "file": "balcony-poster-1100.webp",
+    "source": "video/ocean-balcony.mp4 @ 0.2s",
+    "width": 1100,
+    "height": 619,
+    "bytes": 49536
+  },
+  {
+    "file": "balcony-poster-1800.webp",
+    "source": "video/ocean-balcony.mp4 @ 0.2s",
+    "width": 1800,
+    "height": 1013,
+    "bytes": 95674
+  },
+  {
+    "file": "arrival-640.webp",
+    "source": "video/ocean-balcony.mp4 @ 12s",
+    "width": 640,
+    "height": 360,
+    "bytes": 24572
+  },
+  {
+    "file": "arrival-1100.webp",
+    "source": "video/ocean-balcony.mp4 @ 12s",
+    "width": 1100,
+    "height": 619,
+    "bytes": 55178
+  },
+  {
+    "file": "arrival-1800.webp",
+    "source": "video/ocean-balcony.mp4 @ 12s",
+    "width": 1800,
+    "height": 1013,
+    "bytes": 109132
+  },
+  {
+    "file": "aerial-poster-640.webp",
+    "source": "video/aerial-resort.mp4 @ 3.5s",
+    "width": 640,
+    "height": 360,
+    "bytes": 30320
+  },
+  {
+    "file": "aerial-poster-1100.webp",
+    "source": "video/aerial-resort.mp4 @ 3.5s",
+    "width": 1100,
+    "height": 619,
+    "bytes": 63684
+  },
+  {
+    "file": "aerial-poster-1800.webp",
+    "source": "video/aerial-resort.mp4 @ 3.5s",
+    "width": 1800,
+    "height": 1013,
+    "bytes": 113710
+  },
+  {
+    "file": "last-light-640.webp",
+    "source": "video/aerial-resort.mp4 @ 6s",
+    "width": 640,
+    "height": 360,
+    "bytes": 29898
+  },
+  {
+    "file": "last-light-1100.webp",
+    "source": "video/aerial-resort.mp4 @ 6s",
+    "width": 1100,
+    "height": 619,
+    "bytes": 61746
+  },
+  {
+    "file": "last-light-1800.webp",
+    "source": "video/aerial-resort.mp4 @ 6s",
+    "width": 1800,
+    "height": 1013,
+    "bytes": 109426
+  },
+  {
+    "file": "hero-villa-desktop.mp4",
+    "source": "video/hero-villa.mp4",
+    "bytes": 7161936
+  },
+  {
+    "file": "hero-villa-mobile.mp4",
+    "source": "video/hero-villa.mp4",
+    "bytes": 3094966
+  },
+  {
+    "file": "ocean-balcony-desktop.mp4",
+    "source": "video/ocean-balcony.mp4",
+    "bytes": 7800571
+  },
+  {
+    "file": "ocean-balcony-mobile.mp4",
+    "source": "video/ocean-balcony.mp4",
+    "bytes": 3020631
+  },
+  {
+    "file": "aerial-resort-desktop.mp4",
+    "source": "video/aerial-resort.mp4",
+    "bytes": 1678058
+  },
+  {
+    "file": "aerial-resort-mobile.mp4",
+    "source": "video/aerial-resort.mp4",
+    "bytes": 715336
+  }
+]

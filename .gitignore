@@ -1,0 +1,36 @@
+# Dependencies and generated build output
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+.cache/
+coverage/
+
+# Local inspection captures and one-off development scripts
+/research/
+
+# Supplied byte-identical film copies; canonical originals are in assets/video
+/public/assets/exterior/*.mp4
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+.npmrc
+.aws/
+.agents/
+.codex/
+.vscode/
+.idea/
+
+# Logs, temporary files and operating-system metadata
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
